@@ -65,5 +65,36 @@ namespace SchoolAPI.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("grouped")]
+        public async Task<IActionResult> GetGroupedGrades([FromQuery] int? classId, [FromQuery] string? np)
+        {
+            if (classId is null)
+            {
+                classId = -1;
+            }
+
+            if (string.IsNullOrEmpty(np))
+            {
+                np = "-1";
+            }
+
+            List<GroupedGradesModel> res = await _gradeService.GetGroupedGrades(classId.Value, np);
+
+            return Ok(res);
+        }
+
+        [HttpGet("studentGrades/{id}")]
+        public async Task<IActionResult> GetStudentGrades(int id)
+        {
+            List<StudentGradesModel> res = await _gradeService.GetStudentGrades(id);
+
+            if (res is null || res.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(res);
+        }
     }
 }

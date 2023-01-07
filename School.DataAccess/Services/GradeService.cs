@@ -29,5 +29,21 @@
         {
             return await CRUDHelper.GetAll<GradeModel>(_mainConn);
         }
+
+        public async Task<List<GroupedGradesModel>> GetGroupedGrades(int classId, string np)
+        {
+            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
+            {
+                return await conn.CallResultFunctionAsync<GroupedGradesModel, FunctionModels.GroupedGradesModel>("public.fn_get_grades", new FunctionModels.GroupedGradesModel() { ClassId = classId, Np = np });
+            }
+        }
+
+        public async Task<List<StudentGradesModel>> GetStudentGrades(int studentId)
+        {
+            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
+            {
+                return await conn.CallResultFunctionAsync<StudentGradesModel, FunctionModels.StudentGradesModel>("public.fn_get_student_grades", new FunctionModels.StudentGradesModel() { StudentId = studentId });
+            }
+        }
     }
 }

@@ -23,5 +23,13 @@
         {
             return await CRUDHelper.GetAll<AttendanceModel>(_mainConn);
         }
+
+        public async Task<List<AttendancePerClassModel>> GetAttendancePerClass(int classId)
+        {
+            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
+            {
+                return await conn.CallResultFunctionAsync<AttendancePerClassModel, FunctionModels.AttendancePerClassModel>("public.fn_get_attendance_per_class", new FunctionModels.AttendancePerClassModel() { ClassId = classId });
+            }
+        }
     }
 }

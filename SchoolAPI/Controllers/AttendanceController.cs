@@ -45,5 +45,18 @@ namespace SchoolAPI.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("byclass/{classId}")]
+        public async Task<IActionResult> GetStudentGrades(int classId)
+        {
+            List<AttendancePerClassModel> res = await _attendanceService.GetAttendancePerClass(classId);
+
+            if (res is null || res.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(res);
+        }
     }
 }
