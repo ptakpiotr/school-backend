@@ -14,34 +14,22 @@ namespace School.DataAccess.Services
 
         public async Task AddSchedule(ScheduleDTO schedule)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.InsertAsync("plan_zajec", schedule);
-            }
+            await CRUDHelper.Add<ScheduleModel, ScheduleDTO>(_mainConn, schedule);
         }
 
         public async Task DeleteSchedule(int id)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.DeleteAsync("plan_zajec", id);
-            }
+            await CRUDHelper.Delete<ScheduleModel>(_mainConn, id);
         }
 
         public async Task<List<ScheduleModel>> GetFullSchedule()
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                return await conn.SelectAllAsync<ScheduleModel>("v_schedule");
-            }
+            return await CRUDHelper.GetAll<ScheduleModel>(_mainConn);
         }
 
         public async Task<ScheduleModel> GetScheduleById(int id)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                return await conn.SelectOneAsync<ScheduleModel>("v_schedule", id);
-            }
+            return await CRUDHelper.GetOne<ScheduleModel>(_mainConn, id);
         }
     }
 }

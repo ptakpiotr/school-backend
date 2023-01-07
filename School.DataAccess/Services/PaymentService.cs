@@ -1,9 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using Npgsql;
-using School.DataAccess.Services.Contracts;
-using System.Data;
-
-namespace School.DataAccess.Services
+﻿namespace School.DataAccess.Services
 {
     public class PaymentService : IPaymentService
     {
@@ -17,34 +12,22 @@ namespace School.DataAccess.Services
 
         public async Task AddPayment(PaymentDTO payment)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.InsertAsync("oplaty", payment);
-            }
+            await CRUDHelper.Add<PaymentModel, PaymentDTO>(_mainConn, payment);
         }
 
         public async Task DeletePayment(int id)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.InsertAsync("oplaty", id);
-            }
+            await CRUDHelper.Delete<PaymentModel>(_mainConn, id);
         }
 
         public async Task<List<PaymentModel>> GetAllPayments()
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                return await conn.SelectAllAsync<PaymentModel>("v_all_payments");
-            }
+            return await CRUDHelper.GetAll<PaymentModel>(_mainConn);
         }
 
         public async Task<PaymentModel> GetPayment(int id)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                return await conn.SelectOneAsync<PaymentModel>("v_all_payments", id);
-            }
+            return await CRUDHelper.GetOne<PaymentModel>(_mainConn, id);
         }
     }
 }

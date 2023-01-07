@@ -1,6 +1,6 @@
 ﻿namespace School.DataAccess.Services
 {
-    public class BasicService
+    internal class MarkerService
     {
     }
 }

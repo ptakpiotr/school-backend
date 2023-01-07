@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using System.Data;
 
 namespace School.DataAccess
 {
@@ -7,7 +6,7 @@ namespace School.DataAccess
     {
         public static async Task DeleteAsync(this IDbConnection conn, string tableName, int id)
         {
-            await conn.ExecuteAsync($"DELETE FROM {tableName} WHERE id = @id", id);
+            await conn.ExecuteAsync($"DELETE FROM {tableName} WHERE id = @id", new { id = id });
         }
 
         public static async Task InsertAsync<T>(this IDbConnection conn, string tableName, T value)
@@ -20,7 +19,7 @@ namespace School.DataAccess
 
         public static async Task<T> SelectOneAsync<T>(this IDbConnection conn, string tableName, int id)
         {
-            var res = await conn.QueryAsync<T>($"SELECT * FROM  {tableName} WHERE id = @id LIMIT 1", id);
+            var res = await conn.QueryAsync<T>($"SELECT * FROM {tableName} WHERE id = @id", new { id = id });
 
             return res.FirstOrDefault();
         }

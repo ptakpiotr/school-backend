@@ -11,26 +11,17 @@
 
         public async Task AddAttendance(AttendanceModel attendance)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.InsertAsync("obecnosci", attendance);
-            }
+            await CRUDHelper.Add<AttendanceModel, AttendanceModel>(_mainConn, attendance);
         }
 
         public async Task DeleteAttendance(int id)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.DeleteAsync("obecnosci", id);
-            }
+            await CRUDHelper.Delete<AttendanceModel>(_mainConn, id);
         }
 
         public async Task<List<AttendanceModel>> GetAllAttendance()
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                return await conn.SelectAllAsync<AttendanceModel>("obecnosci");
-            }
+            return await CRUDHelper.GetAll<AttendanceModel>(_mainConn);
         }
     }
 }

@@ -26,6 +26,14 @@ namespace SchoolAPI.Controllers
             return Ok(teachers);
         }
 
+        [HttpGet("detailed")]
+        public async Task<IActionResult> GetDetailedSubjects()
+        {
+            List<DetailedSubjectModel> teachers = await _subjectService.GetDetailedSubjects();
+
+            return Ok(teachers);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSubject(int id)
         {

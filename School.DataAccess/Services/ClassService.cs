@@ -11,34 +11,22 @@
 
         public async Task AddClass(ClassDTO classToAdd)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.InsertAsync("klasy", classToAdd);
-            }
+            await CRUDHelper.Add<ClassModel, ClassDTO>(_mainConn, classToAdd);
         }
 
         public async Task DeleteClass(int id)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.DeleteAsync("klasy", id);
-            }
+            await CRUDHelper.Delete<ClassModel>(_mainConn, id);
         }
 
         public async Task<List<ClassModel>> GetAllClasses()
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                return await conn.SelectAllAsync<ClassModel>("v_all_class");
-            }
+            return await CRUDHelper.GetAll<ClassModel>(_mainConn);
         }
 
         public async Task<ClassModel> GetClass(int id)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                return await conn.SelectOneAsync<ClassModel>("v_all_class", id);
-            }
+            return await CRUDHelper.GetOne<ClassModel>(_mainConn, id);
         }
     }
 }

@@ -11,9 +11,9 @@ namespace School.DataAccess
         {
             DefaultTypeMap.MatchNamesWithUnderscores = true;
 
-            string? servicesNamespace = typeof(BasicService).Namespace;
+            string? servicesNamespace = typeof(MarkerService).Namespace;
 
-            IEnumerable<Type> servicesTypes = from t in Assembly.GetAssembly(typeof(BasicService))?.GetTypes()
+            IEnumerable<Type> servicesTypes = from t in Assembly.GetAssembly(typeof(MarkerService))?.GetTypes()
                                               where t.IsClass && t.Namespace == servicesNamespace
                                               select t;
 

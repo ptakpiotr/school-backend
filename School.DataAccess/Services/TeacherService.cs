@@ -1,9 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using Npgsql;
-using School.DataAccess.Services.Contracts;
-using System.Data;
-
-namespace School.DataAccess.Services
+﻿namespace School.DataAccess.Services
 {
     public class TeacherService : ITeacherService
     {
@@ -16,34 +11,22 @@ namespace School.DataAccess.Services
 
         public async Task AddTeacher(TeacherDTO teacher)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.InsertAsync("nauczyciele", teacher);
-            }
+            await CRUDHelper.Add<TeacherModel, TeacherDTO>(_mainConn, teacher);
         }
 
         public async Task DeleteTeacher(int id)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.DeleteAsync("nauczyciele", id);
-            }
+            await CRUDHelper.Delete<TeacherModel>(_mainConn, id);
         }
 
         public async Task<TeacherModel> GetTeacherById(int id)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                return await conn.SelectOneAsync<TeacherModel>("nauczyciele", id);
-            }
+            return await CRUDHelper.GetOne<TeacherModel>(_mainConn, id);
         }
 
         public async Task<List<TeacherModel>> GetTeachers()
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                return await conn.SelectAllAsync<TeacherModel>("nauczyciele");
-            }
+            return await CRUDHelper.GetAll<TeacherModel>(_mainConn);
         }
     }
 }

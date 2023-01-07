@@ -1,9 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using Npgsql;
-using School.DataAccess.Services.Contracts;
-using System.Data;
-
-namespace School.DataAccess.Services
+﻿namespace School.DataAccess.Services
 {
     public class SubjectService : ISubjectService
     {
@@ -16,34 +11,31 @@ namespace School.DataAccess.Services
 
         public async Task AddSubject(SubjectDTO subject)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.InsertAsync("przedmioty", subject);
-            }
+            await CRUDHelper.Add<SubjectModel, SubjectDTO>(_mainConn, subject);
         }
 
         public async Task DeleteSubject(int id)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                await conn.DeleteAsync("przedmioty", id);
-            }
+            await CRUDHelper.Delete<SubjectModel>(_mainConn, id);
         }
 
         public async Task<List<SubjectModel>> GetAllSubjects()
         {
+            return await CRUDHelper.GetAll<SubjectModel>(_mainConn);
+        }
+
+        public async Task<List<DetailedSubjectModel>> GetDetailedSubjects()
+        {
             using (IDbConnection conn = new NpgsqlConnection(_mainConn))
             {
-                return await conn.SelectAllAsync<SubjectModel>("v_all_subjects");
+                return await conn.SelectAllAsync<DetailedSubjectModel>("v_all_subjects_detailed");
             }
         }
 
         public async Task<SubjectModel> GetSubject(int id)
         {
-            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
-            {
-                return await conn.SelectOneAsync<SubjectModel>("v_all_subjects", id);
-            }
+            return await CRUDHelper.GetOne<SubjectModel>(_mainConn, id);
+
         }
     }
 }
