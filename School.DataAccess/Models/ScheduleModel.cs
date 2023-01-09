@@ -5,8 +5,7 @@
         public int Id { get; set; }
         public DateTime TerminOd { get; set; }
         public DateTime TerminDo { get; set; }
-        public int PrzedmiotOddzialId { get; set; }
-        public int KlasaId { get; set; }
-        public int PrzedmiotId { get; set; }
+        public string Przedmiot { get; set; }
+        public int Rok { get; set; }
     }
 }

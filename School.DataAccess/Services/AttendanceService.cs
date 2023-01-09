@@ -9,9 +9,9 @@
             _mainConn = options.Value.MainConn;
         }
 
-        public async Task AddAttendance(AttendanceModel attendance)
+        public async Task AddAttendance(AttendanceDTO attendance)
         {
-            await CRUDHelper.Add<AttendanceModel, AttendanceModel>(_mainConn, attendance);
+            await CRUDHelper.Add<AttendanceModel, AttendanceDTO>(_mainConn, attendance);
         }
 
         public async Task DeleteAttendance(int id)
@@ -24,11 +24,11 @@
             return await CRUDHelper.GetAll<AttendanceModel>(_mainConn);
         }
 
-        public async Task<List<AttendancePerClassModel>> GetAttendancePerClass(int classId)
+        public async Task<List<AttendancePerClassModel>> GetAttendancePerClass(int classId, string expr)
         {
             using (IDbConnection conn = new NpgsqlConnection(_mainConn))
             {
-                return await conn.CallResultFunctionAsync<AttendancePerClassModel, FunctionModels.AttendancePerClassModel>("public.fn_get_attendance_per_class", new FunctionModels.AttendancePerClassModel() { ClassId = classId });
+                return await conn.CallResultFunctionAsync<AttendancePerClassModel, FunctionModels.AttendancePerClassModel>("public.fn_get_attendance_per_class", new FunctionModels.AttendancePerClassModel() { ClassId = classId }, expr);
             }
         }
     }

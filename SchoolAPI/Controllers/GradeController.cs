@@ -71,7 +71,7 @@ namespace SchoolAPI.Controllers
         {
             if (classId is null)
             {
-                classId = -1;
+                classId = 1;
             }
 
             if (string.IsNullOrEmpty(np))

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using School.DataAccess;
 using School.DataAccess.Models;
+using School.DataAccess.Models.Dtos;
 using School.DataAccess.Services.Contracts;
 
 namespace SchoolAPI.Controllers
@@ -26,7 +28,7 @@ namespace SchoolAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAttendance(AttendanceModel subject)
+        public async Task<IActionResult> AddAttendance(AttendanceDTO subject)
         {
             if (ModelState.IsValid)
             {
@@ -47,9 +49,21 @@ namespace SchoolAPI.Controllers
         }
 
         [HttpGet("byclass/{classId}")]
-        public async Task<IActionResult> GetStudentGrades(int classId)
+        public async Task<IActionResult> GetStudentGrades(int classId, [FromQuery] string? dateFrom, [FromQuery] string? dateTo)
         {
-            List<AttendancePerClassModel> res = await _attendanceService.GetAttendancePerClass(classId);
+            List<OperatorModel> operators = new();
+            if (!string.IsNullOrEmpty(dateFrom))
+            {
+                operators.Add(new OperatorModel { FieldName = "data", Operator = OperatorType.GreaterThan, Value = dateFrom });
+            }
+
+            if (!string.IsNullOrEmpty(dateTo))
+            {
+                operators.Add(new OperatorModel { FieldName = "data", Operator = OperatorType.LessThan, Value = dateTo });
+            }
+
+            string condition = Utils.BuildCondition(operators.ToArray());
+            List<AttendancePerClassModel> res = await _attendanceService.GetAttendancePerClass(classId, condition);
 
             if (res is null || res.Count == 0)
             {

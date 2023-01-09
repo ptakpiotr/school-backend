@@ -6,5 +6,6 @@
         Task<ClassModel> GetClass(int id);
         Task AddClass(ClassDTO classToAdd);
         Task DeleteClass(int id);
+        Task<List<ClassAvgModel>> GetClassAverages();
     }
 }

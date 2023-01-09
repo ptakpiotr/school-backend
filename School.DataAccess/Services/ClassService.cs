@@ -28,5 +28,10 @@
         {
             return await CRUDHelper.GetOne<ClassModel>(_mainConn, id);
         }
+
+        public async Task<List<ClassAvgModel>> GetClassAverages()
+        {
+            return await CRUDHelper.GetAll<ClassAvgModel>(_mainConn);
+        }
     }
 }

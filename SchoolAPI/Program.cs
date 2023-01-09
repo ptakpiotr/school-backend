@@ -26,6 +26,14 @@ services.AddMvc().AddNewtonsoftJson(opts =>
 });
 services.AddDataAccess();
 
+services.AddCors((opts) =>
+{
+    opts.AddPolicy("AllowAnyonePolicy", (policyOpts) =>
+    {
+        policyOpts.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
+    });
+});
+
 //configuration for options pattern: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-7.0
 services.Configure<ConnectionStringOptions>(Configuration.GetSection("ConnectionStrings"));
 
@@ -42,6 +50,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowAnyonePolicy");
 app.UseHttpsRedirection();
 app.UseSerilogRequestLogging();
 

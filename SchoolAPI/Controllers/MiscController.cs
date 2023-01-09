@@ -18,7 +18,7 @@ namespace SchoolAPI.Controllers
             _miscService = miscService;
         }
 
-        [HttpGet("paymentTypes")]
+        [HttpGet("paymentType")]
         public async Task<IActionResult> GetPaymentTypes()
         {
             List<PaymentTypeModel> paymentTypes = await _miscService.GetPaymentTypes();
@@ -26,7 +26,7 @@ namespace SchoolAPI.Controllers
             return Ok(paymentTypes);
         }
 
-        [HttpGet("rooms")]
+        [HttpGet("room")]
         public async Task<IActionResult> GetRooms()
         {
             List<RoomModel> rooms = await _miscService.GetRooms();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using School.DataAccess;
 using School.DataAccess.Models;
 using School.DataAccess.Models.Dtos;
 using School.DataAccess.Services.Contracts;
@@ -22,6 +23,22 @@ namespace SchoolAPI.Controllers
         public async Task<IActionResult> GetClasss()
         {
             List<ClassModel> classes = await _classService.GetAllClasses();
+
+            return Ok(classes);
+        }
+
+        [HttpGet("avg")]
+        public async Task<IActionResult> GetClassAverages([FromQuery] int? npId)
+        {
+            List<OperatorModel> operators = new();
+            if (npId is not null)
+            {
+                //operators.Add(new OperatorModel { FieldName = "npId", Operator = OperatorType.GreaterThan, Value = npId });
+            }
+
+            string condition = Utils.BuildCondition(operators.ToArray());
+
+            List<ClassAvgModel> classes = await _classService.GetClassAverages();
 
             return Ok(classes);
         }
