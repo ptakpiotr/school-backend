@@ -38,5 +38,10 @@ namespace School.DataAccess
 
             return res.ToList();
         }
+
+        internal static async Task CallExecuteFunctionAsync<T>(this IDbConnection conn, string fnName, T value)
+        {
+            await conn.QueryAsync(fnName, param: value, commandType: CommandType.StoredProcedure, commandTimeout: 900);
+        }
     }
 }

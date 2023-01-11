@@ -3,7 +3,7 @@
 public class ScheduleDTO
 {
     public int Przedmiot_oddzial_id { get; set; }
-    public DateTime TerminOd { get; set; }
-    public DateTime TerminDo { get; set; }
+    public DateTime Termin_Od { get; set; }
+    public DateTime Termin_Do { get; set; }
 }
 

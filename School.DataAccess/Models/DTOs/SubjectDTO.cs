@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string Nazwa_przedmiotu { get; set; }
-        public int Sala_id { get; set; }
+        public string Numer_sali { get; set; }
     }
 }

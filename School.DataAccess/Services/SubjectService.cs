@@ -11,7 +11,10 @@
 
         public async Task AddSubject(SubjectDTO subject)
         {
-            await CRUDHelper.Add<SubjectModel, SubjectDTO>(_mainConn, subject);
+            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
+            {
+                await conn.CallExecuteFunctionAsync("public.fn_insert_subject", new { np = subject.Nazwa_przedmiotu, ns = subject.Numer_sali });
+            }
         }
 
         public async Task DeleteSubject(int id)
