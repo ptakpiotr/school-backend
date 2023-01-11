@@ -1,7 +1,11 @@
-using Coravel;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using School.DataAccess;
 using School.DataAccess.Models;
+using SchoolAPI.Validation;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,12 +18,10 @@ builder.Host.UseSerilog();
 IServiceCollection services = builder.Services;
 // Add services to the container.ss
 
-services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
-services.AddScheduler();
 services.AddMvc().AddNewtonsoftJson(opts =>
 {
     opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -36,12 +38,29 @@ services.AddCors((opts) =>
 
 //configuration for options pattern: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-7.0
 services.Configure<ConnectionStringOptions>(Configuration.GetSection("ConnectionStrings"));
+services.Configure<JWTOptions>(Configuration.GetSection("Jwt"));
+
+services.AddFluentValidationAutoValidation(options =>
+{
+    options.ImplicitlyValidateChildProperties = true;
+    options.ImplicitlyValidateRootCollectionElements = true;
+}).AddValidatorsFromAssemblyContaining<UserValidator>();
+
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer((opts) =>
+{
+    opts.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = Configuration.GetSection("Jwt:Issuer").Value,
+        ValidAudience = Configuration.GetSection("Jwt:Audience").Value,
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(Configuration.GetSection("Jwt:Key").Value))
+    };
+});
 
 var app = builder.Build();
-app.Services.UseScheduler((opts) =>
-{
-    opts.Schedule(() => { Console.WriteLine("HELLO"); }).EveryMinute();
-});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -54,6 +73,7 @@ app.UseCors("AllowAnyonePolicy");
 app.UseHttpsRedirection();
 app.UseSerilogRequestLogging();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
