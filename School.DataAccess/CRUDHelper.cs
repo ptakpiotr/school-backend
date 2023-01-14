@@ -1,4 +1,6 @@
-﻿namespace School.DataAccess
+﻿using School.DataAccess.Exceptions;
+
+namespace School.DataAccess
 {
     internal static class CRUDHelper
     {
@@ -14,7 +16,7 @@
             }
             else
             {
-                throw new Exception();
+                throw new InvalidDatabaseOperationException();
             }
         }
 
@@ -30,7 +32,7 @@
             }
             else
             {
-                throw new Exception();
+                throw new InvalidDatabaseOperationException();
             }
         }
 
@@ -46,7 +48,7 @@
             }
             else
             {
-                throw new Exception();
+                throw new InvalidDatabaseOperationException();
             }
         }
 
@@ -62,7 +64,23 @@
             }
             else
             {
-                throw new Exception();
+                throw new InvalidDatabaseOperationException();
+            }
+        }
+
+        internal static async Task Update<T>(string connString, int id, T value)
+        {
+            bool success = ModelDTODatabaseMappings.mappings.TryGetValue(typeof(T), out TableNames tableNames);
+            if (success && tableNames is not null)
+            {
+                using (IDbConnection conn = new NpgsqlConnection(connString))
+                {
+                    await conn.UpdateAsync(tableNames.Original, id, value);
+                }
+            }
+            else
+            {
+                throw new InvalidDatabaseOperationException();
             }
         }
     }

@@ -9,6 +9,7 @@ namespace School.DataAccess.Profiles
         {
             CreateMap<UserDTO, UserModel>();
             CreateMap<UserLoginDTO, UserDTO>();
+            CreateMap<TeacherDTO, TeacherModel>().ReverseMap();
         }
     }
 }

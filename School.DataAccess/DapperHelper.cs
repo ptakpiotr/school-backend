@@ -26,7 +26,7 @@ namespace School.DataAccess
 
         internal static async Task<List<T>> SelectAllAsync<T>(this IDbConnection conn, string tableName, string expr = "", params string[]? fieldsToSelect)
         {
-            var res = await conn.QueryAsync<T>($"SELECT {(fieldsToSelect is null || fieldsToSelect.Length == 0 ? "*" : String.Join(',', fieldsToSelect))} FROM {tableName} {(!string.IsNullOrEmpty(expr) ? $"WHERE {expr}" : "")}");
+            var res = await conn.QueryAsync<T>($"SELECT {(fieldsToSelect is null || fieldsToSelect.Length == 0 ? "*" : String.Join(',', fieldsToSelect))} FROM {tableName} {(!string.IsNullOrEmpty(expr) ? $"WHERE {expr}" : "")} ORDER BY id ASC");
 
             return res.ToList();
         }
@@ -42,6 +42,13 @@ namespace School.DataAccess
         internal static async Task CallExecuteFunctionAsync<T>(this IDbConnection conn, string fnName, T value)
         {
             await conn.QueryAsync(fnName, param: value, commandType: CommandType.StoredProcedure, commandTimeout: 900);
+        }
+
+        internal static async Task UpdateAsync<T>(this IDbConnection conn, string tableName, int id, T value)
+        {
+            string[] colsToUpdate = typeof(T).GetProperties().Select(p => $"{p.Name.ToLower()} = @{p.Name.ToLower()}").Where(p => !p.StartsWith("id")).ToArray();
+
+            await conn.ExecuteAsync($"UPDATE {tableName} SET {string.Join(",", colsToUpdate)} WHERE id = {id}", value);
         }
     }
 }

@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using School.DataAccess.Models;
-using School.DataAccess.Models.Dtos;
-using School.DataAccess.Services.Contracts;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace SchoolAPI.Controllers
 {
@@ -12,10 +10,12 @@ namespace SchoolAPI.Controllers
     public class TeacherController : ControllerBase
     {
         private readonly ITeacherService _teacherService;
+        private readonly IMapper _mapper;
 
-        public TeacherController(ITeacherService teacherService)
+        public TeacherController(ITeacherService teacherService, IMapper mapper)
         {
             _teacherService = teacherService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -33,7 +33,7 @@ namespace SchoolAPI.Controllers
 
             if (teacher is null)
             {
-                return NotFound();
+                return StatusCode(Constants.DataNotFound);
             }
 
             return Ok(teacher);
@@ -59,10 +59,29 @@ namespace SchoolAPI.Controllers
 
             if (teacher is null)
             {
-                return NotFound();
+                return StatusCode(Constants.DataNotFound);
             }
 
             await _teacherService.DeleteTeacher(id);
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> EditTeacher(int id, JsonPatchDocument<TeacherDTO> teacherDTO)
+        {
+            TeacherModel teacher = await _teacherService.GetTeacherById(id);
+            if (teacher is null)
+            {
+                return BadRequest();
+            }
+            TeacherDTO teacherMapped = _mapper.Map<TeacherDTO>(teacher);
+
+            teacherDTO.ApplyTo(teacherMapped);
+
+            teacher = _mapper.Map<TeacherModel>(teacherMapped);
+
+            await _teacherService.UpdateTeacher(id, teacher);
 
             return NoContent();
         }

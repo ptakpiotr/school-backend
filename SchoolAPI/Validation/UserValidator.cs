@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-using School.DataAccess.Models.DTOs;
-using School.DataAccess.Services.Contracts;
+﻿using School.DataAccess.Models.DTOs;
 
 namespace SchoolAPI.Validation
 {

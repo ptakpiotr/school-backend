@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using School.DataAccess.Models.Dtos;
+﻿
 
 namespace SchoolAPI.Validation
 {

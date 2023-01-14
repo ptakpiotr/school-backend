@@ -28,5 +28,10 @@
         {
             return await CRUDHelper.GetAll<TeacherModel>(_mainConn);
         }
+
+        public async Task UpdateTeacher(int id, TeacherModel teacher)
+        {
+            await CRUDHelper.Update(_mainConn, id, teacher);
+        }
     }
 }

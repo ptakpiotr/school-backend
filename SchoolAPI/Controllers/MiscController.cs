@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using School.DataAccess.Models;
-using School.DataAccess.Models.Dtos;
-using School.DataAccess.Services.Contracts;
-
-namespace SchoolAPI.Controllers
+﻿namespace SchoolAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

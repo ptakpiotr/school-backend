@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using School.DataAccess.Models.Dtos;
-
-namespace SchoolAPI.Validation
+﻿namespace SchoolAPI.Validation
 {
     public class PaymentValidator : AbstractValidator<PaymentDTO>
     {

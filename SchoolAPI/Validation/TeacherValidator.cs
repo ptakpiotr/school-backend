@@ -1,15 +1,11 @@
-﻿using FluentValidation;
-using School.DataAccess.Models.Dtos;
-
-namespace SchoolAPI.Validation
+﻿namespace SchoolAPI.Validation
 {
     public class TeacherValidator : AbstractValidator<TeacherDTO>
     {
         public TeacherValidator()
         {
-            RuleForEach((x) =>
-                new[] { x.Imie, x.Nazwisko }
-            ).NotEmpty();
+            RuleFor(x => x.Imie).NotEmpty();
+            RuleFor(x => x.Nazwisko).NotEmpty();
         }
     }
 }

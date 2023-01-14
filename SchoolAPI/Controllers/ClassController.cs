@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using School.DataAccess;
-using School.DataAccess.Models;
-using School.DataAccess.Models.Dtos;
-using School.DataAccess.Services.Contracts;
-
-namespace SchoolAPI.Controllers
+﻿namespace SchoolAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -50,7 +44,7 @@ namespace SchoolAPI.Controllers
 
             if (subject is null)
             {
-                return NotFound();
+                return StatusCode(Constants.DataNotFound);
             }
 
             return Ok(subject);
@@ -76,7 +70,7 @@ namespace SchoolAPI.Controllers
 
             if (subject is null)
             {
-                return NotFound();
+                return StatusCode(Constants.DataNotFound);
             }
 
             await _classService.DeleteClass(id);

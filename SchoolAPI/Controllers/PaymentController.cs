@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using School.DataAccess.Models;
-using School.DataAccess.Models.Dtos;
-using School.DataAccess.Services.Contracts;
-
-namespace SchoolAPI.Controllers
+﻿namespace SchoolAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -33,7 +28,7 @@ namespace SchoolAPI.Controllers
 
             if (payment is null)
             {
-                return NotFound();
+                return StatusCode(Constants.DataNotFound);
             }
 
             return Ok(payment);
