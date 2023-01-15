@@ -1,34 +1,41 @@
 ﻿using System.Text;
 
-namespace School.DataAccess
+namespace School.DataAccess;
+
+/// <summary>
+/// Zbiór przydatnych metod
+/// </summary>
+public static class Utils
 {
-    public static class Utils
+    /// <summary>
+    /// Metoda budująca warunek w SQL bazując na tabeli operatorów
+    /// </summary>
+    /// <param name="operators"></param>
+    /// <returns></returns>
+    public static string BuildCondition(params OperatorModel[] operators)
     {
-        public static string BuildCondition(params OperatorModel[] operators)
+        StringBuilder expr = new();
+
+        for (int i = 0; i < operators.Length; i++)
         {
-            StringBuilder expr = new();
-
-            for (int i = 0; i < operators.Length; i++)
+            if (i == operators.Length - 1)
             {
-                if (i == operators.Length - 1)
-                {
-                    expr.Append($" {operators[i].FieldName} {GetOperator(operators[i])} '{operators[i].Value}'");
-                }
-                else
-                {
-                    expr.Append($" {operators[i].FieldName} {GetOperator(operators[i])} '{operators[i].Value}' AND");
-                }
+                expr.Append($" {operators[i].FieldName} {GetOperator(operators[i])} '{operators[i].Value}'");
             }
-
-            return expr.ToString();
+            else
+            {
+                expr.Append($" {operators[i].FieldName} {GetOperator(operators[i])} '{operators[i].Value}' AND");
+            }
         }
 
-        private static string GetOperator(OperatorModel om) => om.Operator switch
-        {
-            OperatorType.GreaterThan => ">",
-            OperatorType.LessThan => "<",
-            OperatorType.Equal => "=",
-            _ => "!="
-        };
+        return expr.ToString();
     }
+
+    private static string GetOperator(OperatorModel om) => om.Operator switch
+    {
+        OperatorType.GreaterThan => ">",
+        OperatorType.LessThan => "<",
+        OperatorType.Equal => "=",
+        _ => "!="
+    };
 }

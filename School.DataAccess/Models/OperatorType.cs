@@ -1,9 +1,11 @@
-﻿namespace School.DataAccess.Models
+﻿namespace School.DataAccess.Models;
+
+/// <summary>
+/// Enum reprezentujący dopuszczalne typy operatorów
+/// </summary>
+public enum OperatorType
 {
-    public enum OperatorType
-    {
-        GreaterThan,
-        LessThan,
-        Equal
-    }
+    GreaterThan,
+    LessThan,
+    Equal
 }

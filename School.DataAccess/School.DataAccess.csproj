@@ -12,4 +12,10 @@
 		<PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
 		<PackageReference Include="Npgsql" Version="6.0.8" />
 	</ItemGroup>
+	<ItemGroup>
+	  <EditorConfigFiles Remove="C:\Users\piter\source\repos\SchoolProject\School.DataAccess\.editorconfig" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="C:\Users\piter\source\repos\SchoolProject\School.DataAccess\.editorconfig" />
+	</ItemGroup>
 </Project>

@@ -1,8 +1,10 @@
-﻿namespace School.DataAccess.Models.DTOs
+﻿namespace School.DataAccess.Models.DTOs;
+
+/// <summary>
+/// DTO dla modelu UserModel
+/// </summary>
+public class UserDTO
 {
-    public class UserDTO
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
+    public string Email { get; set; }
+    public string Password { get; set; }
 }

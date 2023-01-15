@@ -1,5 +1,8 @@
 ﻿namespace SchoolAPI.Validation
 {
+    /// <summary>
+    /// Walidator dla klasy
+    /// </summary>
     public class ClassValidator : AbstractValidator<ClassDTO>
     {
         public ClassValidator()

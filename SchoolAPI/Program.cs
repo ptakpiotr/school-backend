@@ -1,10 +1,7 @@
-using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
-using School.DataAccess;
-using School.DataAccess.Models;
 using SchoolAPI.Validation;
 using Serilog;
 
@@ -16,16 +13,18 @@ Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).Cre
 builder.Host.UseSerilog();
 
 IServiceCollection services = builder.Services;
-// Add services to the container.ss
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
+// Adding non-default serializer -> needed for PATCH functionality
 services.AddMvc().AddNewtonsoftJson(opts =>
 {
     opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 });
+
+// Registering services and their implementations from DataAccess project
 services.AddDataAccess();
 
 services.AddCors((opts) =>

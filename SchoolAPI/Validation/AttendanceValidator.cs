@@ -2,6 +2,9 @@
 
 namespace SchoolAPI.Validation
 {
+    /// <summary>
+    /// Walidator dla AttendanceDTO
+    /// </summary>
     public class AttendanceValidator : AbstractValidator<AttendanceDTO>
     {
         public AttendanceValidator()

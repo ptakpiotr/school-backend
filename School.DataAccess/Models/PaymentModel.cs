@@ -1,5 +1,8 @@
 ﻿namespace School.DataAccess.Models;
 
+/// <summary>
+/// Model odpowiadający widokowi v_all_payments
+/// </summary>
 public class PaymentModel
 {
     public int Id { get; set; }

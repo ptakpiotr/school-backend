@@ -1,9 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using Npgsql;
-using School.DataAccess.Services.Contracts;
-using System.Data;
-
-namespace School.DataAccess.Services
+﻿namespace School.DataAccess.Services
 {
     public class MiscService : IMiscService
     {
@@ -59,6 +54,23 @@ namespace School.DataAccess.Services
             using (IDbConnection conn = new NpgsqlConnection(_mainConn))
             {
                 return await conn.SelectAllAsync<RoomModel>("sale");
+            }
+        }
+
+        public async Task UpdatePaymentType(int id, PaymentTypeDTO paymentType)
+        {
+            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
+            {
+                await conn.UpdateAsync("rodzaje_oplat", id, paymentType);
+            }
+
+        }
+
+        public async Task UpdateRoom(int id, RoomDTO room)
+        {
+            using (IDbConnection conn = new NpgsqlConnection(_mainConn))
+            {
+                await conn.UpdateAsync("sale", id, room);
             }
         }
     }

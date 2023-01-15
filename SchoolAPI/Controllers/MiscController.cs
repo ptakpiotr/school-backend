@@ -1,4 +1,7 @@
-﻿namespace SchoolAPI.Controllers
+﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
+
+namespace SchoolAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -6,11 +9,13 @@
     {
         private readonly ILogger<MiscController> _logger;
         private readonly IMiscService _miscService;
+        private readonly IMapper _mapper;
 
-        public MiscController(ILogger<MiscController> logger, IMiscService miscService)
+        public MiscController(ILogger<MiscController> logger, IMiscService miscService, IMapper mapper)
         {
             _logger = logger;
             _miscService = miscService;
+            _mapper = mapper;
         }
 
         [HttpGet("paymentType")]
@@ -85,6 +90,44 @@
                 _logger.LogError(ex, ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
+        }
+
+        [HttpPatch("room/{id}")]
+        public async Task<IActionResult> EditRoom(int id, JsonPatchDocument<RoomDTO> roomDTO)
+        {
+            List<RoomModel> rooms = await _miscService.GetRooms();
+            if (!rooms.Any(r => r.Id == id))
+            {
+                return BadRequest();
+            }
+            RoomModel room = rooms.FirstOrDefault(r => r.Id == id);
+
+            RoomDTO roomMapped = _mapper.Map<RoomDTO>(room);
+
+            roomDTO.ApplyTo(roomMapped);
+
+            await _miscService.UpdateRoom(id, roomMapped);
+
+            return NoContent();
+        }
+
+        [HttpPatch("paymentType/{id}")]
+        public async Task<IActionResult> EditPaymentType(int id, JsonPatchDocument<PaymentTypeDTO> paymentTypeDTO)
+        {
+            List<PaymentTypeModel> payments = await _miscService.GetPaymentTypes();
+            if (!payments.Any(r => r.Id == id))
+            {
+                return BadRequest();
+            }
+            PaymentTypeModel paymentType = payments.FirstOrDefault(r => r.Id == id);
+
+            PaymentTypeDTO paymentTypeMapped = _mapper.Map<PaymentTypeDTO>(paymentType);
+
+            paymentTypeDTO.ApplyTo(paymentTypeMapped);
+
+            await _miscService.UpdatePaymentType(id, paymentTypeMapped);
+
+            return NoContent();
         }
     }
 }

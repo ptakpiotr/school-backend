@@ -1,11 +1,13 @@
-﻿namespace School.DataAccess.Models
+﻿namespace School.DataAccess.Models;
+
+/// <summary>
+/// Model odpowiadający rezultatowi zwracanemu przez funkcję fn_get_attendance_per_class
+/// </summary>
+public class AttendancePerClassModel
 {
-    public class AttendancePerClassModel
-    {
-        public string Imie { get; set; }
-        public string Nazwisko { get; set; }
-        public int Rok { get; set; }
-        public bool Obecny { get; set; }
-        public DateTime Data { get; set; }
-    }
+    public string Imie { get; set; }
+    public string Nazwisko { get; set; }
+    public int Rok { get; set; }
+    public bool Obecny { get; set; }
+    public DateTime Data { get; set; }
 }

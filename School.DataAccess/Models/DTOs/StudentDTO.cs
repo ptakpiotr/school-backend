@@ -1,5 +1,8 @@
 ﻿namespace School.DataAccess.Models.Dtos;
 
+/// <summary>
+/// DTO dla modelu StudentModel
+/// </summary>
 public class StudentDTO
 {
     public string Imie { get; set; }

@@ -1,5 +1,8 @@
 ﻿namespace SchoolAPI.Validation
 {
+    /// <summary>
+    /// Walidator dla nowo wprowadzonej przez użytkownika informacji o planie zajęć
+    /// </summary>
     public class ScheduleValidator : AbstractValidator<ScheduleDTO>
     {
         public ScheduleValidator()

@@ -1,5 +1,8 @@
 ﻿namespace SchoolAPI.Validation
 {
+    /// <summary>
+    /// Walidator dla nowo wprowadzonej przez użytkownika płatności 
+    /// </summary>
     public class PaymentValidator : AbstractValidator<PaymentDTO>
     {
         public PaymentValidator()
