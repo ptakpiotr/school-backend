@@ -3,6 +3,9 @@ using School.DataAccess.Models.DTOs;
 
 namespace School.DataAccess.Profiles
 {
+    /// <summary>
+    /// Główny profil dla AutoMappera
+    /// </summary>
     public class MainProfile : Profile
     {
         public MainProfile()

@@ -20,6 +20,9 @@ internal static class ModelDTODatabaseMappings
     }
 }
 
+/// <summary>
+/// Klasa reprezentująca nazwy tabel (oryginalną oraz widok)
+/// </summary>
 class TableNames
 {
     public string Original { get; set; }

@@ -1,5 +1,8 @@
 ﻿namespace School.DataAccess.Models;
 
+/// <summary>
+/// Model zawierający opcje dla sekcji JWT w konfiguracji
+/// </summary>
 public class JWTOptions
 {
     public string Issuer { get; set; }
