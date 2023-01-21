@@ -11,7 +11,6 @@ namespace SchoolAPI.Validation
         {
             RuleFor(x => x.Uczen_id).NotEmpty();
             RuleFor(x => x.Data).NotEmpty().GreaterThan(DateTime.UtcNow);
-            RuleFor(x => x.Obecny).NotEmpty();
         }
     }
 }

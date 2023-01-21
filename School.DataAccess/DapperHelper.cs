@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using School.DataAccess.Exceptions;
 
 namespace School.DataAccess;
 
@@ -16,8 +17,14 @@ internal static class DapperHelper
     {
         string[] columnNames = typeof(T).GetProperties().Select(p => p.Name.ToLower()).Where(p => p.ToLower() != "id").ToArray();
         string stmnt = $"INSERT INTO {tableName}({string.Join(",", columnNames)}) VALUES({string.Join(",", columnNames.Select(c => $"@{c}"))})";
-
-        await conn.ExecuteAsync(stmnt, value);
+        try
+        {
+            await conn.ExecuteAsync(stmnt, value);
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidDatabaseOperationException(ex.Message);
+        }
     }
 
     internal static async Task<T> SelectOneAsync<T>(this IDbConnection conn, string tableName, int id, string expr = "")

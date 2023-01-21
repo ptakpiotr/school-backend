@@ -2,6 +2,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
+using SchoolAPI.Filters;
 using SchoolAPI.Validation;
 using Serilog;
 
@@ -18,8 +19,13 @@ IServiceCollection services = builder.Services;
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
+services.AddScoped<GlobalExceptionFilter>();
+
 // Adding non-default serializer -> needed for PATCH functionality
-services.AddMvc().AddNewtonsoftJson(opts =>
+services.AddMvc(opts =>
+{
+    opts.Filters.Add<GlobalExceptionFilter>();
+}).AddNewtonsoftJson(opts =>
 {
     opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 });
@@ -65,9 +71,9 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseCors("AllowAnyonePolicy");
 app.UseHttpsRedirection();
 app.UseSerilogRequestLogging();
+app.UseCors("AllowAnyonePolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();

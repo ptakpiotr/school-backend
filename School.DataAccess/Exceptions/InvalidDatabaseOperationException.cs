@@ -5,4 +5,8 @@
 /// </summary>
 public class InvalidDatabaseOperationException : Exception
 {
+    public InvalidDatabaseOperationException(string message = "Tabela bądź mapowanie nie istnieje") : base(message)
+    {
+
+    }
 }
