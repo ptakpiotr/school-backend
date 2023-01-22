@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>School Backend: GradeService Class Reference</title>
+<title>School backend: GradeService Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">School Backend
+   <div id="projectname">School backend
    </div>
   </td>
  </tr>
@@ -87,12 +87,14 @@ Inheritance diagram for GradeService:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a427fe3a851699d3b83b67e5933cbfd40"><td class="memItemLeft" align="right" valign="top"><a id="a427fe3a851699d3b83b67e5933cbfd40" name="a427fe3a851699d3b83b67e5933cbfd40"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>GradeService</b> (IOptions&lt; <a class="el" href="class_connection_string_options.html">ConnectionStringOptions</a> &gt; options)</td></tr>
+<tr class="memitem:a427fe3a851699d3b83b67e5933cbfd40"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grade_service.html#a427fe3a851699d3b83b67e5933cbfd40">GradeService</a> (IOptions&lt; <a class="el" href="class_connection_string_options.html">ConnectionStringOptions</a> &gt; options)</td></tr>
 <tr class="separator:a427fe3a851699d3b83b67e5933cbfd40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7058be39876655f137e56165b9498e0f"><td class="memItemLeft" align="right" valign="top">async Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grade_service.html#a7058be39876655f137e56165b9498e0f">AddGrade</a> (<a class="el" href="class_grade_model.html">GradeModel</a> grade)</td></tr>
 <tr class="memdesc:a7058be39876655f137e56165b9498e0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda dodajaca ocene   <a href="class_grade_service.html#a7058be39876655f137e56165b9498e0f">More...</a><br /></td></tr>
 <tr class="separator:a7058be39876655f137e56165b9498e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d25894af08704b2d502f27787d18a0"><td class="memItemLeft" align="right" valign="top">async Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grade_service.html#a34d25894af08704b2d502f27787d18a0">AddUserGrade</a> (<a class="el" href="class_user_grade_d_t_o.html">UserGradeDTO</a> userGradeDTO)</td></tr>
+<tr class="memdesc:a34d25894af08704b2d502f27787d18a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda dodajaca oceniana prace   <a href="class_grade_service.html#a34d25894af08704b2d502f27787d18a0">More...</a><br /></td></tr>
+<tr class="separator:a34d25894af08704b2d502f27787d18a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee85e92044c067c54c7d94894584b713"><td class="memItemLeft" align="right" valign="top">async Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grade_service.html#aee85e92044c067c54c7d94894584b713">DeleteGrade</a> (int id)</td></tr>
 <tr class="memdesc:aee85e92044c067c54c7d94894584b713"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda usuwajaca ocene   <a href="class_grade_service.html#aee85e92044c067c54c7d94894584b713">More...</a><br /></td></tr>
 <tr class="separator:aee85e92044c067c54c7d94894584b713"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,6 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8fd35a4591dff5cb645731f6014caea5"><td class="memItemLeft" align="right" valign="top">async Task&lt; List&lt; <a class="el" href="class_student_grades_model.html">StudentGradesModel</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grade_service.html#a8fd35a4591dff5cb645731f6014caea5">GetStudentGrades</a> (int studentId)</td></tr>
 <tr class="memdesc:a8fd35a4591dff5cb645731f6014caea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda zwracająca oceny studenta   <a href="class_grade_service.html#a8fd35a4591dff5cb645731f6014caea5">More...</a><br /></td></tr>
 <tr class="separator:a8fd35a4591dff5cb645731f6014caea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a111191b22a65d676439218511dcc1b36"><td class="memItemLeft" align="right" valign="top">async Task&lt; List&lt; <a class="el" href="class_user_grade_model.html">UserGradeModel</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grade_service.html#a111191b22a65d676439218511dcc1b36">GetUserGrades</a> ()</td></tr>
+<tr class="memdesc:a111191b22a65d676439218511dcc1b36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda zwracajaca liste prac dla wszystkich uczniow   <a href="class_grade_service.html#a111191b22a65d676439218511dcc1b36">More...</a><br /></td></tr>
+<tr class="separator:a111191b22a65d676439218511dcc1b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a339e702ffe8c56b72474d81a2038a2dd"><td class="memItemLeft" align="right" valign="top">Task&lt; List&lt; <a class="el" href="class_grade_model.html">GradeModel</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_grade_service.html#a339e702ffe8c56b72474d81a2038a2dd">GetGrades</a> ()</td></tr>
 <tr class="memdesc:a339e702ffe8c56b72474d81a2038a2dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda pobierajaca wszystkie oceny   <a href="interface_i_grade_service.html#a339e702ffe8c56b72474d81a2038a2dd">More...</a><br /></td></tr>
 <tr class="separator:a339e702ffe8c56b72474d81a2038a2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,7 +131,32 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a76736d62c0b57beb2847796e52035c00"><td class="memItemLeft" align="right" valign="top">Task&lt; List&lt; <a class="el" href="class_student_grades_model.html">StudentGradesModel</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_grade_service.html#a76736d62c0b57beb2847796e52035c00">GetStudentGrades</a> (int studentId)</td></tr>
 <tr class="memdesc:a76736d62c0b57beb2847796e52035c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda zwracająca oceny studenta   <a href="interface_i_grade_service.html#a76736d62c0b57beb2847796e52035c00">More...</a><br /></td></tr>
 <tr class="separator:a76736d62c0b57beb2847796e52035c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fbc5d86ad66361ef2a1bbcc46e5d896"><td class="memItemLeft" align="right" valign="top">Task&lt; List&lt; <a class="el" href="class_user_grade_model.html">UserGradeModel</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_grade_service.html#a3fbc5d86ad66361ef2a1bbcc46e5d896">GetUserGrades</a> ()</td></tr>
+<tr class="memdesc:a3fbc5d86ad66361ef2a1bbcc46e5d896"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda zwracajaca liste prac dla wszystkich uczniow   <a href="interface_i_grade_service.html#a3fbc5d86ad66361ef2a1bbcc46e5d896">More...</a><br /></td></tr>
+<tr class="separator:a3fbc5d86ad66361ef2a1bbcc46e5d896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc50a24a6938a4f2bba6428e09a8597c"><td class="memItemLeft" align="right" valign="top">Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_grade_service.html#acc50a24a6938a4f2bba6428e09a8597c">AddUserGrade</a> (<a class="el" href="class_user_grade_d_t_o.html">UserGradeDTO</a> userGradeDTO)</td></tr>
+<tr class="memdesc:acc50a24a6938a4f2bba6428e09a8597c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda dodajaca oceniana prace   <a href="interface_i_grade_service.html#acc50a24a6938a4f2bba6428e09a8597c">More...</a><br /></td></tr>
+<tr class="separator:acc50a24a6938a4f2bba6428e09a8597c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a427fe3a851699d3b83b67e5933cbfd40" name="a427fe3a851699d3b83b67e5933cbfd40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a427fe3a851699d3b83b67e5933cbfd40">&#9670;&#160;</a></span>GradeService()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GradeService.GradeService </td>
+          <td>(</td>
+          <td class="paramtype">IOptions&lt; <a class="el" href="class_connection_string_options.html">ConnectionStringOptions</a> &gt;&#160;</td>
+          <td class="paramname"><em>options</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7058be39876655f137e56165b9498e0f" name="a7058be39876655f137e56165b9498e0f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7058be39876655f137e56165b9498e0f">&#9670;&#160;</a></span>AddGrade()</h2>
@@ -154,6 +184,35 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 <p>Implements <a class="el" href="interface_i_grade_service.html#a262c9ff3f7820fd1fe4a1e134777a1db">IGradeService</a>.</p>
+
+</div>
+</div>
+<a id="a34d25894af08704b2d502f27787d18a0" name="a34d25894af08704b2d502f27787d18a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34d25894af08704b2d502f27787d18a0">&#9670;&#160;</a></span>AddUserGrade()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">async Task GradeService.AddUserGrade </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_user_grade_d_t_o.html">UserGradeDTO</a>&#160;</td>
+          <td class="paramname"><em>userGradeDTO</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Metoda dodajaca oceniana prace  </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userGradeDTO</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Implements <a class="el" href="interface_i_grade_service.html#acc50a24a6938a4f2bba6428e09a8597c">IGradeService</a>.</p>
 
 </div>
 </div>
@@ -306,8 +365,30 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a111191b22a65d676439218511dcc1b36" name="a111191b22a65d676439218511dcc1b36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a111191b22a65d676439218511dcc1b36">&#9670;&#160;</a></span>GetUserGrades()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">async Task&lt; List&lt; <a class="el" href="class_user_grade_model.html">UserGradeModel</a> &gt; &gt; GradeService.GetUserGrades </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Metoda zwracajaca liste prac dla wszystkich uczniow  </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Implements <a class="el" href="interface_i_grade_service.html#a3fbc5d86ad66361ef2a1bbcc46e5d896">IGradeService</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>School.DataAccess/Services/GradeService.cs</li>
+<li>C:/Users/piter/source/repos/SchoolProject/School.DataAccess/Services/<a class="el" href="_grade_service_8cs.html">GradeService.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
