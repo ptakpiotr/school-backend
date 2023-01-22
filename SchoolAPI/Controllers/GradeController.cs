@@ -21,6 +21,14 @@
             return Ok(grades);
         }
 
+        [HttpGet("usergrades")]
+        public async Task<IActionResult> GetUserGrades()
+        {
+            List<UserGradeModel> userGrades = await _gradeService.GetUserGrades();
+
+            return Ok(userGrades);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetGrade(int id)
         {
@@ -40,6 +48,19 @@
             if (ModelState.IsValid)
             {
                 await _gradeService.AddGrade(grade);
+
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+
+        [HttpPost("usergrades")]
+        public async Task<IActionResult> AddUserGrade(UserGradeDTO grade)
+        {
+            if (ModelState.IsValid)
+            {
+                await _gradeService.AddUserGrade(grade);
 
                 return Ok();
             }

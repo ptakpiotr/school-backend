@@ -15,6 +15,11 @@ public class GradeService : IGradeService
 
     }
 
+    public async Task AddUserGrade(UserGradeDTO userGradeDTO)
+    {
+        await CRUDHelper.Add<UserGradeModel, UserGradeDTO>(_mainConn, userGradeDTO);
+    }
+
     public async Task DeleteGrade(int id)
     {
         await CRUDHelper.Delete<GradeModel>(_mainConn, id);
@@ -44,5 +49,10 @@ public class GradeService : IGradeService
         {
             return await conn.CallResultFunctionAsync<StudentGradesModel, FunctionModels.StudentGradesModel>("public.fn_get_student_grades", new FunctionModels.StudentGradesModel() { StudentId = studentId });
         }
+    }
+
+    public async Task<List<UserGradeModel>> GetUserGrades()
+    {
+        return await CRUDHelper.GetAll<UserGradeModel>(_mainConn);
     }
 }

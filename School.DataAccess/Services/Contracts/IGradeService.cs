@@ -48,4 +48,17 @@ public interface IGradeService
     /// <returns></returns>
     Task<List<StudentGradesModel>> GetStudentGrades(int studentId);
 
+    /// <summary>
+    /// Metoda zwracajaca liste prac dla wszystkich uczniow
+    /// </summary>
+    /// <returns></returns>
+    Task<List<UserGradeModel>> GetUserGrades();
+
+    /// <summary>
+    /// Metoda dodajaca oceniana prace
+    /// </summary>
+    /// <param name="userGradeDTO"></param>
+    /// <returns></returns>
+    Task AddUserGrade(UserGradeDTO userGradeDTO);
+
 }

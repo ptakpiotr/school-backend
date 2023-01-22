@@ -17,6 +17,7 @@ internal static class ModelDTODatabaseMappings
         mappings.Add(typeof(SubjectModel), new() { Original = "przedmioty", View = "v_all_subjects" });
         mappings.Add(typeof(TeacherModel), new() { Original = "nauczyciele", View = "nauczyciele" });
         mappings.Add(typeof(ClassAvgModel), new() { Original = "v_class_avg", View = "v_class_avg" });
+        mappings.Add(typeof(UserGradeModel), new() { Original = "uczen_oceny", View = "v_user_grade" });
     }
 }
 

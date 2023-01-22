@@ -83,6 +83,15 @@ AS
     INNER JOIN uczniowie u
     ON o.uczen_id = u.id;
 
+-- widok dla prac ucznia
+CREATE VIEW v_user_grade AS 
+    SELECT uo.id, CONCAT(u.imie,' ',u.nazwisko) as ImieNazwiskoUcznia,CONCAT(p.nazwa_przedmiotu,'- ',po.klasa_id) as NazwaPrzedmiotu,uo.nazwa_pracy FROM uczen_oceny uo
+    INNER JOIN uczniowie u
+    ON uo.uczen_id = u.id
+    INNER JOIN przedmiot_oddzial po
+    ON uo.przedmiot_oddzial_id = po.id
+    INNER JOIN przedmioty p 
+    ON po.przedmiot_id = p.id;
 -- funkcja zwracająca obecności per klasa
 CREATE OR REPLACE FUNCTION fn_get_attendance_per_class (classId INT)
 RETURNS TABLE(imie VARCHAR(50),nazwisko VARCHAR(50),rok BIGINT,obecny BOOLEAN,data DATE)
