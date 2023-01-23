@@ -144,7 +144,7 @@ ALTER TABLE
 
 --trigger który działa w następujący sposób, gdy okaże się, że osoba o podanym imieniu i nazwisku już istnieje w jakiejś klasie
 --to jeśli jest jakaś kolejna klasa to wówczas tam ląduje
-CREATE OR REPLACE FUNCTION fn_tr_add_person_to_class() RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION fn_tr_dodaj_osobe_do_klasy() RETURNS TRIGGER AS $$
         DECLARE 
             cl_id INTEGER;
             max_cl_id INTEGER;
@@ -165,10 +165,10 @@ CREATE OR REPLACE FUNCTION fn_tr_add_person_to_class() RETURNS TRIGGER AS $$
 $$ LANGUAGE 'plpgsql';  
 
 CREATE TRIGGER tr_add_person_to_class BEFORE INSERT ON uczniowie FOR EACH ROW 
-EXECUTE PROCEDURE fn_tr_add_person_to_class();
+EXECUTE PROCEDURE fn_tr_dodaj_osobe_do_klasy();
 
 --trigger który "upewnia się", że wf nie moze byc w środę ani we wtorek
-CREATE OR REPLACE FUNCTION fn_add_pe_to_schedule() RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION fn_tr_dodaj_wf_do_planu() RETURNS TRIGGER AS $$
         DECLARE 
             nazwa_przedmiotu VARCHAR(50);
             dow_termin_od INTEGER;
@@ -199,7 +199,7 @@ CREATE OR REPLACE FUNCTION fn_add_pe_to_schedule() RETURNS TRIGGER AS $$
 $$ LANGUAGE 'plpgsql';  
 
 --trigger, który blokuje dodwanie przedmiotu w planie zajęć dla terminu wcześniejszego niż dzień dzisiejszy
-CREATE OR REPLACE FUNCTION fn_tr_add_later_to_schedule() RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION fn_tr_dodaj_do_planu_pozniej() RETURNS TRIGGER AS $$
         BEGIN
             IF(NEW.termin_od::date < NOW()::date) THEN
                 RAISE EXCEPTION 'Nie ma mozliwosci dodania zajec w terminie wczesniejszym niz dzien dzisiejszy';
@@ -211,12 +211,12 @@ CREATE OR REPLACE FUNCTION fn_tr_add_later_to_schedule() RETURNS TRIGGER AS $$
 $$ LANGUAGE 'plpgsql';  
 
 CREATE TRIGGER tr_add_later_to_schedule BEFORE INSERT ON plan_zajec FOR EACH ROW 
-EXECUTE PROCEDURE fn_tr_add_later_to_schedule();
+EXECUTE PROCEDURE fn_tr_dodaj_do_planu_pozniej();
 CREATE TRIGGER tr_add_pe_to_schedule BEFORE INSERT ON plan_zajec FOR EACH ROW 
-EXECUTE PROCEDURE fn_add_pe_to_schedule();
+EXECUTE PROCEDURE fn_tr_dodaj_wf_do_planu();
 
 --blokowanie dodawania frekwencji w miesiacach wakacyjnych
-CREATE OR REPLACE FUNCTION fn_tr_cannot_add_attendance_during_holidays() RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION fn_tr_obecnosc_w_wakacje() RETURNS TRIGGER AS $$
         DECLARE
             month_num INTEGER;
         BEGIN
@@ -231,10 +231,10 @@ CREATE OR REPLACE FUNCTION fn_tr_cannot_add_attendance_during_holidays() RETURNS
 $$ LANGUAGE 'plpgsql';  
 
 CREATE TRIGGER tr_cannot_add_attendance_during_holidays BEFORE INSERT ON obecnosci FOR EACH ROW 
-EXECUTE PROCEDURE fn_tr_cannot_add_attendance_during_holidays();
+EXECUTE PROCEDURE fn_tr_obecnosc_w_wakacje();
 
 --blokowanie dodawania popraw ocen w nieskończoność (możliwa tylko 1 poprawka)
-CREATE OR REPLACE FUNCTION fn_tr_allow_only_two_grades_per_test() RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION fn_tr_dwie_oceny_per_test() RETURNS TRIGGER AS $$
         DECLARE
             test_grade_cnt INTEGER;
         BEGIN
@@ -249,4 +249,4 @@ CREATE OR REPLACE FUNCTION fn_tr_allow_only_two_grades_per_test() RETURNS TRIGGE
 $$ LANGUAGE 'plpgsql';  
 
 CREATE TRIGGER tr_allow_only_two_grades_per_test BEFORE INSERT ON oceny FOR EACH ROW 
-EXECUTE PROCEDURE fn_tr_allow_only_two_grades_per_test();
+EXECUTE PROCEDURE fn_tr_dwie_oceny_per_test();

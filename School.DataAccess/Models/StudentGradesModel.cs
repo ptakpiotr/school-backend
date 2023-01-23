@@ -1,7 +1,7 @@
 ﻿namespace School.DataAccess.Models;
 
 /// <summary>
-/// Model odpowiadający rezultatowi zwróconemu przez funkcję fn_get_student_grades
+/// Model odpowiadający rezultatowi zwróconemu przez funkcję fn_pobierz_oceny_ucznia
 /// </summary>
 public class StudentGradesModel
 {

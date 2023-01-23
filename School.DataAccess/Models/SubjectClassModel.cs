@@ -1,7 +1,7 @@
 ﻿namespace School.DataAccess.Models;
 
 /// <summary>
-/// Model odpowiadający widokowi v_subject_class
+/// Model odpowiadający widokowi v_przedmiot_w_oddzialach
 /// </summary>
 public class SubjectClassModel
 {

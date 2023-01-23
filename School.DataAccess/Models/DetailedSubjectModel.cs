@@ -1,7 +1,7 @@
 ﻿namespace School.DataAccess.Models;
 
 /// <summary>
-/// Model odpowiadający widokowi v_all_subjects
+/// Model odpowiadający widokowi v_wszystkie_przedmioty
 /// </summary>
 public class DetailedSubjectModel
 {

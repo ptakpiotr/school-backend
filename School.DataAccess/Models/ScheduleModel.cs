@@ -1,7 +1,7 @@
 ﻿namespace School.DataAccess.Models;
 
 /// <summary>
-/// Model odpowiadający widokowi v_schedule
+/// Model odpowiadający widokowi v_plan_zajec
 /// </summary>
 public class ScheduleModel
 {

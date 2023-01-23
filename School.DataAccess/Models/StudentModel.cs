@@ -1,7 +1,7 @@
 ﻿namespace School.DataAccess.Models;
 
 /// <summary>
-/// Model odpowiadający widokowi v_all_students
+/// Model odpowiadający widokowi v_wszyscy_studenci
 /// </summary>
 public class StudentModel
 {

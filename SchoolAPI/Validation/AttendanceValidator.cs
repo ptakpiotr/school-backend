@@ -10,7 +10,7 @@ namespace SchoolAPI.Validation
         public AttendanceValidator()
         {
             RuleFor(x => x.Uczen_id).NotEmpty();
-            RuleFor(x => x.Data).NotEmpty().GreaterThan(DateTime.UtcNow);
+            RuleFor(x => x.Data).NotEmpty().LessThan(DateTime.UtcNow);
         }
     }
 }

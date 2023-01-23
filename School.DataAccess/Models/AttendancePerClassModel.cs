@@ -1,7 +1,7 @@
 ﻿namespace School.DataAccess.Models;
 
 /// <summary>
-/// Model odpowiadający rezultatowi zwracanemu przez funkcję fn_get_attendance_per_class
+/// Model odpowiadający rezultatowi zwracanemu przez funkcję fn_frekwencja_per_klasa
 /// </summary>
 public class AttendancePerClassModel
 {

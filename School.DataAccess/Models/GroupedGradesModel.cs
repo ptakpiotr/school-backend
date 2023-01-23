@@ -1,7 +1,7 @@
 ﻿namespace School.DataAccess.Models;
 
 /// <summary>
-/// Model odpowiadający wartości zwróconej przez funkcję fn_get_grades
+/// Model odpowiadający wartości zwróconej przez funkcję fn_pobierz_oceny
 /// </summary>
 public class GroupedGradesModel
 {

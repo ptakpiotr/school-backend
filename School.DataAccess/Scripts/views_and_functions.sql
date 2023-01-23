@@ -1,5 +1,5 @@
 -- widok prezentujący wszystkie klasy
-CREATE VIEW v_all_class
+CREATE VIEW v_wszystkie_klasy
 AS
     SELECT k.id,k.rok,CONCAT(n.imie,' ',n.nazwisko) AS imienazwiskonauczyciela
     FROM klasy k
@@ -8,7 +8,7 @@ AS
 
 
 -- widok prezentujący wszystkie przedmioty
-CREATE VIEW v_all_subjects
+CREATE VIEW v_wszystkie_przedmioty
 AS
     SELECT p.id,p.nazwa_przedmiotu AS nazwaprzedmiotu,s.numer_sali AS numersali 
     FROM przedmioty p
@@ -16,7 +16,7 @@ AS
     ON p.sala_id = s.id;
 
 -- widok prezentujący bardziej szczegółowe informacje o przedmiotach
-CREATE VIEW v_all_subjects_detailed
+CREATE VIEW v_wszystkie_przedmioty_dokladnie
 AS
     SELECT p.id,k.rok,CONCAT(n.imie,' ',n.nazwisko) AS imienazwiskonauczyciela,n.id AS nauczycielid,pp.nazwa_przedmiotu AS nazwaprzedmiotu
     FROM przedmiot_oddzial p
@@ -28,21 +28,21 @@ AS
     ON p.przedmiot_id = pp.id;
 
 -- widok prezentujący informacje o wszystkich uczniach
-CREATE VIEW v_all_students
+CREATE VIEW v_wszyscy_studenci
 AS
     SELECT u.id,u.imie,u.nazwisko,k.rok FROM uczniowie u
     INNER JOIN klasy k
     ON u.klasa_id = k.id;
 
 -- widok prezentujący obecności uczniów
-CREATE VIEW v_student_attendance
+CREATE VIEW v_obecnosc_studentow
 AS
     SELECT u.imie,u.nazwisko,u.klasa_id,o.obecny,o.data FROM obecnosci o
     INNER JOIN uczniowie u
     ON o.uczen_id = u.id;
 
 -- widok pobierajacy wszystkie srednie grupujac po id klasy, roku i nazwie pracy
-CREATE VIEW v_class_avg
+CREATE VIEW v_srednia_klas
 AS
     SELECT k.id,k.rok,uo.nazwa_pracy AS nazwapracy,AVG(o.ocena) AS sredniaocena 
     FROM klasy k
@@ -55,7 +55,7 @@ AS
     GROUP BY k.id,k.rok,uo.nazwa_pracy;
 
 -- widok prezentujacy wszystkie oplaty
-CREATE VIEW v_all_payments
+CREATE VIEW v_wszystkie_platnosci
 AS
     SELECT o.id,ro.powod,u.imie,u.nazwisko,o.wartosc 
     FROM oplaty o
@@ -65,7 +65,7 @@ AS
     ON o.uczen_id = u.id;
 
 -- widok prezentujacy plan zajec
-CREATE VIEW v_schedule
+CREATE VIEW v_plan_zajec
 AS
     SELECT p.id,p.termin_od AS terminod,p.termin_do AS termindo,pp.nazwa_przedmiotu AS przedmiot,k.rok AS rok
     FROM plan_zajec p
@@ -77,14 +77,14 @@ AS
     ON po.klasa_id = k.id;
 
 -- widok dla frekwencji
-CREATE VIEW v_Attendance 
+CREATE VIEW v_frekwencja 
 AS 
     SELECT o.id,u.imie,u.nazwisko,o.data,o.obecny FROM obecnosci o
     INNER JOIN uczniowie u
     ON o.uczen_id = u.id;
 
 -- widok dla prac ucznia
-CREATE VIEW v_user_grade AS 
+CREATE VIEW v_prace_ucznia AS 
     SELECT uo.id, CONCAT(u.imie,' ',u.nazwisko) as ImieNazwiskoUcznia,CONCAT(p.nazwa_przedmiotu,'- ',po.klasa_id) as NazwaPrzedmiotu,uo.nazwa_pracy FROM uczen_oceny uo
     INNER JOIN uczniowie u
     ON uo.uczen_id = u.id
@@ -94,7 +94,7 @@ CREATE VIEW v_user_grade AS
     ON po.przedmiot_id = p.id;
 
 -- widok prezentujacy wszyskie przedmioty w oddzialach
-CREATE VIEW v_subject_class AS
+CREATE VIEW v_przedmiot_w_oddzialach AS
     SELECT k.rok,CONCAT(n.imie, ' ',n.nazwisko) AS nauczyciel,p.nazwa_przedmiotu AS nazwaprzedmiotu FROM przedmiot_oddzial po
     INNER JOIN klasy k
     ON po.klasa_id = k.id
@@ -105,7 +105,7 @@ CREATE VIEW v_subject_class AS
 
 
 -- funkcja zwracająca obecności per klasa
-CREATE OR REPLACE FUNCTION fn_get_attendance_per_class (classId INT)
+CREATE OR REPLACE FUNCTION fn_frekwencja_per_klasa (classId INT)
 RETURNS TABLE(imie VARCHAR(50),nazwisko VARCHAR(50),rok BIGINT,obecny BOOLEAN,data DATE)
 AS $$
 BEGIN
@@ -118,7 +118,7 @@ BEGIN
 END; $$ LANGUAGE 'plpgsql';
 
 -- funkcja zwracajac oceny, pobieramy nazwe pracy oraz klase
-CREATE OR REPLACE FUNCTION fn_get_grades (classId INT,np TEXT)
+CREATE OR REPLACE FUNCTION fn_pobierz_oceny (classId INT,np TEXT)
 RETURNS TABLE(ocena INT,uoid BIGINT,nazwapracy VARCHAR(255),uczenid BIGINT,klasaid BIGINT)
 AS $$
 BEGIN
@@ -135,7 +135,7 @@ BEGIN
 END; $$ LANGUAGE 'plpgsql';
 
 -- funkcja pobierajaca wszystkie oceny ucznia
-CREATE OR REPLACE FUNCTION fn_get_student_grades(studentID BIGINT)
+CREATE OR REPLACE FUNCTION fn_pobierz_oceny_ucznia(studentID BIGINT)
 RETURNS TABLE(ocena INT,nazwapracy VARCHAR(255),uczenid BIGINT,przedmiotoddzialid BIGINT)
 AS $$
 BEGIN
@@ -147,7 +147,7 @@ BEGIN
 END; $$ LANGUAGE 'plpgsql';
 
 --funkcja wstawiająca przedmiot do tabeli przedmioty
-CREATE OR REPLACE FUNCTION fn_insert_subject(np VARCHAR(50),ns VARCHAR(50)) RETURNS INTEGER AS $$
+CREATE OR REPLACE FUNCTION fn_wstaw_przedmiot(np VARCHAR(50),ns VARCHAR(50)) RETURNS INTEGER AS $$
         DECLARE
             id_sali INTEGER;
         BEGIN

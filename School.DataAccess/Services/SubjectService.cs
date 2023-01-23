@@ -13,7 +13,7 @@
         {
             using (IDbConnection conn = new NpgsqlConnection(_mainConn))
             {
-                await conn.CallExecuteFunctionAsync("public.fn_insert_subject", new { np = subject.Nazwa_przedmiotu, ns = subject.Numer_sali });
+                await conn.CallExecuteFunctionAsync("public.fn_wstaw_przedmiot", new { np = subject.Nazwa_przedmiotu, ns = subject.Numer_sali });
             }
         }
 
@@ -36,7 +36,7 @@
         {
             using (IDbConnection conn = new NpgsqlConnection(_mainConn))
             {
-                return await conn.SelectAllAsync<DetailedSubjectModel>("v_all_subjects_detailed");
+                return await conn.SelectAllAsync<DetailedSubjectModel>("v_wszystkie_przedmioty_dokladnie");
             }
         }
 

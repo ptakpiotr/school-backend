@@ -39,7 +39,7 @@ public class GradeService : IGradeService
     {
         using (IDbConnection conn = new NpgsqlConnection(_mainConn))
         {
-            return await conn.CallResultFunctionAsync<GroupedGradesModel, FunctionModels.GroupedGradesModel>("public.fn_get_grades", new FunctionModels.GroupedGradesModel() { ClassId = classId, Np = np });
+            return await conn.CallResultFunctionAsync<GroupedGradesModel, FunctionModels.GroupedGradesModel>("public.fn_pobierz_oceny", new FunctionModels.GroupedGradesModel() { ClassId = classId, Np = np });
         }
     }
 
@@ -47,7 +47,7 @@ public class GradeService : IGradeService
     {
         using (IDbConnection conn = new NpgsqlConnection(_mainConn))
         {
-            return await conn.CallResultFunctionAsync<StudentGradesModel, FunctionModels.StudentGradesModel>("public.fn_get_student_grades", new FunctionModels.StudentGradesModel() { StudentId = studentId });
+            return await conn.CallResultFunctionAsync<StudentGradesModel, FunctionModels.StudentGradesModel>("public.fn_pobierz_oceny_ucznia", new FunctionModels.StudentGradesModel() { StudentId = studentId });
         }
     }
 

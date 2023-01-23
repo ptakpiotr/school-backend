@@ -28,7 +28,7 @@ public class AttendanceService : IAttendanceService
     {
         using (IDbConnection conn = new NpgsqlConnection(_mainConn))
         {
-            return await conn.CallResultFunctionAsync<AttendancePerClassModel, FunctionModels.AttendancePerClassModel>("public.fn_get_attendance_per_class", new FunctionModels.AttendancePerClassModel() { ClassId = classId }, expr);
+            return await conn.CallResultFunctionAsync<AttendancePerClassModel, FunctionModels.AttendancePerClassModel>("public.fn_frekwencja_per_klasa", new FunctionModels.AttendancePerClassModel() { ClassId = classId }, expr);
         }
     }
 }

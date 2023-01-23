@@ -1,7 +1,7 @@
 ﻿namespace School.DataAccess.Models;
 
 /// <summary>
-/// Model odpowiadający widokowi v_class_avg
+/// Model odpowiadający widokowi v_srednia_klas
 /// </summary>
 public class ClassAvgModel
 {

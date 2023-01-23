@@ -1,7 +1,7 @@
 ﻿namespace School.DataAccess.Models.Dtos;
 
 /// <summary>
-/// Model odpowiadający widokowi v_attendance
+/// Model odpowiadający widokowi v_frekwencja
 /// </summary>
 public class UserGradeDTO
 {

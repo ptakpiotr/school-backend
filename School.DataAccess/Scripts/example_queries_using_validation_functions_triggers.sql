@@ -25,17 +25,17 @@ INSERT INTO oceny(ocena,uczen_ocena_id) VALUES(7,1);
 INSERT INTO oceny(ocena,uczen_ocena_id) VALUES(2,1);
 
 -- funkcje
-SELECT * FROM fn_get_attendance_per_class(2);
+SELECT * FROM fn_frekwencja_per_klasa(2);
 
-SELECT * FROM fn_get_grades(3,'-1');
-SELECT * FROM fn_get_grades(-1,'Hasteola suaveolens (L.) Pojark.');
+SELECT * FROM fn_pobierz_oceny(3,'-1');
+SELECT * FROM fn_pobierz_oceny(-1,'Hasteola suaveolens (L.) Pojark.');
 
-SELECT * FROM fn_get_student_grades(2);
+SELECT * FROM fn_pobierz_oceny_ucznia(2);
 
 --niepoprawne wywolanie (sale nie istnieje)
-SELECT * FROM fn_insert_subject('Przedmiot testowy','22');
+SELECT * FROM fn_wstaw_przedmiot('Przedmiot testowy','22');
 --poprawne wywolanie
-SELECT * FROM fn_insert_subject('Przedmiot testowy','04');
+SELECT * FROM fn_wstaw_przedmiot('Przedmiot testowy','04');
 
 -- triggery
 
