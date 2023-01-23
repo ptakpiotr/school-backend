@@ -92,6 +92,18 @@ CREATE VIEW v_user_grade AS
     ON uo.przedmiot_oddzial_id = po.id
     INNER JOIN przedmioty p 
     ON po.przedmiot_id = p.id;
+
+-- widok prezentujacy wszyskie przedmioty w oddzialach
+CREATE VIEW v_subject_class AS
+    SELECT k.rok,CONCAT(n.imie, ' ',n.nazwisko) AS nauczyciel,p.nazwa_przedmiotu AS nazwaprzedmiotu FROM przedmiot_oddzial po
+    INNER JOIN klasy k
+    ON po.klasa_id = k.id
+    INNER JOIN nauczyciele n
+    ON po.nauczyciel_id = n.id
+    INNER JOIN przedmioty p
+    ON po.przedmiot_id = p.id;
+
+
 -- funkcja zwracająca obecności per klasa
 CREATE OR REPLACE FUNCTION fn_get_attendance_per_class (classId INT)
 RETURNS TABLE(imie VARCHAR(50),nazwisko VARCHAR(50),rok BIGINT,obecny BOOLEAN,data DATE)

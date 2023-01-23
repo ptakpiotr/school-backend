@@ -1,6 +1,30 @@
 var searchData=
 [
-  ['lessthan_0',['LessThan',['../_operator_type_8cs.html#a6a02b2d1d62293b20242e3dcfbdd0117ac6d9d7bb9939f62f01c80f8b1251501c',1,'OperatorType.cs']]],
-  ['logger_1',['Logger',['../_program_8cs.html#ac6872fb7b52db1c9221f7271a8b3f8c0',1,'Program.cs']]],
-  ['login_2',['Login',['../class_school_a_p_i_1_1_controllers_1_1_user_controller.html#a39edd6883b39fca2dd4ba4a16c0fa042',1,'SchoolAPI::Controllers::UserController']]]
+  ['controllers_0',['Controllers',['../namespace_school_a_p_i_1_1_controllers.html',1,'SchoolAPI']]],
+  ['dataaccess_1',['DataAccess',['../namespace_school_1_1_data_access.html',1,'School']]],
+  ['filters_2',['Filters',['../namespace_school_a_p_i_1_1_filters.html',1,'SchoolAPI']]],
+  ['profiles_3',['Profiles',['../namespace_school_1_1_data_access_1_1_profiles.html',1,'School::DataAccess']]],
+  ['schedulecontroller_4',['ScheduleController',['../class_school_a_p_i_1_1_controllers_1_1_schedule_controller.html',1,'SchoolAPI::Controllers']]],
+  ['scheduledto_5',['ScheduleDTO',['../class_schedule_d_t_o.html',1,'']]],
+  ['schedulemodel_6',['ScheduleModel',['../class_schedule_model.html',1,'']]],
+  ['scheduleservice_7',['ScheduleService',['../class_school_1_1_data_access_1_1_services_1_1_schedule_service.html',1,'School::DataAccess::Services']]],
+  ['schedulevalidator_8',['ScheduleValidator',['../class_school_a_p_i_1_1_validation_1_1_schedule_validator.html',1,'SchoolAPI::Validation']]],
+  ['school_9',['School',['../namespace_school.html',1,'']]],
+  ['school_20backend_20_3cimg_20src_3d_22https_3a_2f_2fimg_2eshields_2eio_2fwebsite_3fdown_5fcolor_3dtomato_26up_5fcolor_3daqua_26up_5fmessage_3dup_26url_3dhttps_253a_252f_252fschool_2dbackend_2eazurewebsites_2enet_252fswagger_252findex_2ehtml_22_20alt_3d_22status_22_2f_3e_10',['School Backend &lt;img src=&quot;https://img.shields.io/website?down_color=tomato&amp;up_color=aqua&amp;up_message=up&amp;url=https%3A%2F%2Fschool-backend.azurewebsites.net%2Fswagger%2Findex.html&quot; alt=&quot;Status&quot;/&gt;',['../md__r_e_a_d_m_e.html',1,'']]],
+  ['schoolapi_11',['SchoolAPI',['../namespace_school_a_p_i.html',1,'']]],
+  ['services_12',['Services',['../namespace_school_1_1_data_access_1_1_services.html',1,'School::DataAccess']]],
+  ['studentcontroller_13',['StudentController',['../class_school_a_p_i_1_1_controllers_1_1_student_controller.html',1,'SchoolAPI::Controllers']]],
+  ['studentdto_14',['StudentDTO',['../class_student_d_t_o.html',1,'']]],
+  ['studentgradesmodel_15',['StudentGradesModel',['../class_student_grades_model.html',1,'']]],
+  ['studentmodel_16',['StudentModel',['../class_student_model.html',1,'']]],
+  ['studentservice_17',['StudentService',['../class_school_1_1_data_access_1_1_services_1_1_student_service.html',1,'School::DataAccess::Services']]],
+  ['studentvalidator_18',['StudentValidator',['../class_school_a_p_i_1_1_validation_1_1_student_validator.html',1,'SchoolAPI::Validation']]],
+  ['subjectclassdto_19',['SubjectClassDTO',['../class_subject_class_d_t_o.html',1,'']]],
+  ['subjectclassmodel_20',['SubjectClassModel',['../class_subject_class_model.html',1,'']]],
+  ['subjectcontroller_21',['SubjectController',['../class_school_a_p_i_1_1_controllers_1_1_subject_controller.html',1,'SchoolAPI::Controllers']]],
+  ['subjectdto_22',['SubjectDTO',['../class_subject_d_t_o.html',1,'']]],
+  ['subjectmodel_23',['SubjectModel',['../class_subject_model.html',1,'']]],
+  ['subjectservice_24',['SubjectService',['../class_school_1_1_data_access_1_1_services_1_1_subject_service.html',1,'School::DataAccess::Services']]],
+  ['subjectvalidator_25',['SubjectValidator',['../class_school_a_p_i_1_1_validation_1_1_subject_validator.html',1,'SchoolAPI::Validation']]],
+  ['validation_26',['Validation',['../namespace_school_a_p_i_1_1_validation.html',1,'SchoolAPI']]]
 ];

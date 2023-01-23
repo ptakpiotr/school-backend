@@ -17,6 +17,11 @@
             }
         }
 
+        public async Task AddSubjectClass(SubjectClassDTO subjectClassDTO)
+        {
+            await CRUDHelper.Add<SubjectClassModel, SubjectClassDTO>(_mainConn, subjectClassDTO);
+        }
+
         public async Task DeleteSubject(int id)
         {
             await CRUDHelper.Delete<SubjectModel>(_mainConn, id);
@@ -39,6 +44,11 @@
         {
             return await CRUDHelper.GetOne<SubjectModel>(_mainConn, id);
 
+        }
+
+        public async Task<List<SubjectClassModel>> GetSubjectClasses()
+        {
+            return await CRUDHelper.GetAll<SubjectClassModel>(_mainConn, false);
         }
     }
 }

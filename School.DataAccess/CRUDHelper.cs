@@ -63,14 +63,14 @@ internal static class CRUDHelper
     /// <param name="connString"></param>
     /// <returns></returns>
     /// <exception cref="InvalidDatabaseOperationException"></exception>
-    internal static async Task<List<T>> GetAll<T>(string connString)
+    internal static async Task<List<T>> GetAll<T>(string connString, bool sortById = true)
     {
         bool success = ModelDTODatabaseMappings.mappings.TryGetValue(typeof(T), out TableNames tableNames);
         if (success && tableNames is not null)
         {
             using (IDbConnection conn = new NpgsqlConnection(connString))
             {
-                return await conn.SelectAllAsync<T>(tableNames.View);
+                return await conn.SelectAllAsync<T>(tableNames.View, sortById: sortById);
             }
         }
         else

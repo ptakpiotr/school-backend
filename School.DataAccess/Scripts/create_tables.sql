@@ -75,6 +75,7 @@ CREATE TABLE przedmiot_oddzial(
     przedmiot_id BIGINT NOT NULL
 );
 
+--tabela nieujeta w ERD - dotyczy uzytkownikow aplikacji
 CREATE TABLE users(
     id BIGSERIAL PRIMARY KEY,
     email VARCHAR(50) NOT NULL,

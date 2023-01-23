@@ -16,17 +16,25 @@
         [HttpGet]
         public async Task<IActionResult> GetSubjects()
         {
-            List<SubjectModel> teachers = await _subjectService.GetAllSubjects();
+            List<SubjectModel> subjects = await _subjectService.GetAllSubjects();
 
-            return Ok(teachers);
+            return Ok(subjects);
         }
 
         [HttpGet("detailed")]
         public async Task<IActionResult> GetDetailedSubjects()
         {
-            List<DetailedSubjectModel> teachers = await _subjectService.GetDetailedSubjects();
+            List<DetailedSubjectModel> subjects = await _subjectService.GetDetailedSubjects();
 
-            return Ok(teachers);
+            return Ok(subjects);
+        }
+
+        [HttpGet("subjectClasses")]
+        public async Task<IActionResult> GetSubjectClasses()
+        {
+            List<SubjectClassModel> subjects = await _subjectService.GetSubjectClasses();
+
+            return Ok(subjects);
         }
 
         [HttpGet("{id}")]
@@ -48,6 +56,19 @@
             if (ModelState.IsValid)
             {
                 await _subjectService.AddSubject(subject);
+
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+
+        [HttpPost("subjectClasses")]
+        public async Task<IActionResult> AddSubjectClass(SubjectClassDTO subject)
+        {
+            if (ModelState.IsValid)
+            {
+                await _subjectService.AddSubjectClass(subject);
 
                 return Ok();
             }

@@ -37,4 +37,17 @@ public interface ISubjectService
     /// <param name="id"></param>
     /// <returns></returns>
     Task DeleteSubject(int id);
+
+    /// <summary>
+    /// Metoda zwracajaca liste przedmiotow-oddzialow
+    /// </summary>
+    /// <returns></returns>
+    Task<List<SubjectClassModel>> GetSubjectClasses();
+
+    /// <summary>
+    /// Metoda dodajaca przedmiot-oddzial
+    /// </summary>
+    /// <param name="subjectClassDTO"></param>
+    /// <returns></returns>
+    Task AddSubjectClass(SubjectClassDTO subjectClassDTO);
 }

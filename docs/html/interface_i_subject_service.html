@@ -105,6 +105,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2d9953c8c746a9cb3edcd282027896bc"><td class="memItemLeft" align="right" valign="top">Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_subject_service.html#a2d9953c8c746a9cb3edcd282027896bc">DeleteSubject</a> (int id)</td></tr>
 <tr class="memdesc:a2d9953c8c746a9cb3edcd282027896bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda usuwająca przedmiot   <a href="interface_i_subject_service.html#a2d9953c8c746a9cb3edcd282027896bc">More...</a><br /></td></tr>
 <tr class="separator:a2d9953c8c746a9cb3edcd282027896bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a908fad0aea7a40fdead007d2667509eb"><td class="memItemLeft" align="right" valign="top">Task&lt; List&lt; <a class="el" href="class_subject_class_model.html">SubjectClassModel</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_subject_service.html#a908fad0aea7a40fdead007d2667509eb">GetSubjectClasses</a> ()</td></tr>
+<tr class="memdesc:a908fad0aea7a40fdead007d2667509eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda zwracajaca liste przedmiotow-oddzialow   <a href="interface_i_subject_service.html#a908fad0aea7a40fdead007d2667509eb">More...</a><br /></td></tr>
+<tr class="separator:a908fad0aea7a40fdead007d2667509eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af38da5c5cf9b21ded69c461e5a6520a1"><td class="memItemLeft" align="right" valign="top">Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_i_subject_service.html#af38da5c5cf9b21ded69c461e5a6520a1">AddSubjectClass</a> (<a class="el" href="class_subject_class_d_t_o.html">SubjectClassDTO</a> subjectClassDTO)</td></tr>
+<tr class="memdesc:af38da5c5cf9b21ded69c461e5a6520a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda dodajaca przedmiot-oddzial   <a href="interface_i_subject_service.html#af38da5c5cf9b21ded69c461e5a6520a1">More...</a><br /></td></tr>
+<tr class="separator:af38da5c5cf9b21ded69c461e5a6520a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Serwis do interakcji z przedmiotami  </p>
@@ -135,6 +141,35 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 <p>Implemented in <a class="el" href="class_school_1_1_data_access_1_1_services_1_1_subject_service.html#ad793a86d0a1a00d34e90491a72b3de4f">School.DataAccess.Services.SubjectService</a>.</p>
+
+</div>
+</div>
+<a id="af38da5c5cf9b21ded69c461e5a6520a1" name="af38da5c5cf9b21ded69c461e5a6520a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af38da5c5cf9b21ded69c461e5a6520a1">&#9670;&#160;</a></span>AddSubjectClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Task ISubjectService.AddSubjectClass </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_subject_class_d_t_o.html">SubjectClassDTO</a>&#160;</td>
+          <td class="paramname"><em>subjectClassDTO</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Metoda dodajaca przedmiot-oddzial  </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">subjectClassDTO</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Implemented in <a class="el" href="class_school_1_1_data_access_1_1_services_1_1_subject_service.html#aa45b9114c53f6467d740452759e27e0e">School.DataAccess.Services.SubjectService</a>.</p>
 
 </div>
 </div>
@@ -240,8 +275,30 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a908fad0aea7a40fdead007d2667509eb" name="a908fad0aea7a40fdead007d2667509eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a908fad0aea7a40fdead007d2667509eb">&#9670;&#160;</a></span>GetSubjectClasses()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Task&lt; List&lt; <a class="el" href="class_subject_class_model.html">SubjectClassModel</a> &gt; &gt; ISubjectService.GetSubjectClasses </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Metoda zwracajaca liste przedmiotow-oddzialow  </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Implemented in <a class="el" href="class_school_1_1_data_access_1_1_services_1_1_subject_service.html#a13e3a4583fa14571c070143d014defd3">School.DataAccess.Services.SubjectService</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
-<li>C:/Users/piter/source/repos/SchoolProject/School.DataAccess/Services/Contracts/<a class="el" href="_i_subject_service_8cs.html">ISubjectService.cs</a></li>
+<li>School.DataAccess/Services/Contracts/ISubjectService.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

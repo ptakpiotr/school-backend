@@ -11,9 +11,11 @@ var searchData=
   ['studentmodel_8',['StudentModel',['../class_student_model.html',1,'']]],
   ['studentservice_9',['StudentService',['../class_school_1_1_data_access_1_1_services_1_1_student_service.html',1,'School::DataAccess::Services']]],
   ['studentvalidator_10',['StudentValidator',['../class_school_a_p_i_1_1_validation_1_1_student_validator.html',1,'SchoolAPI::Validation']]],
-  ['subjectcontroller_11',['SubjectController',['../class_school_a_p_i_1_1_controllers_1_1_subject_controller.html',1,'SchoolAPI::Controllers']]],
-  ['subjectdto_12',['SubjectDTO',['../class_subject_d_t_o.html',1,'']]],
-  ['subjectmodel_13',['SubjectModel',['../class_subject_model.html',1,'']]],
-  ['subjectservice_14',['SubjectService',['../class_school_1_1_data_access_1_1_services_1_1_subject_service.html',1,'School::DataAccess::Services']]],
-  ['subjectvalidator_15',['SubjectValidator',['../class_school_a_p_i_1_1_validation_1_1_subject_validator.html',1,'SchoolAPI::Validation']]]
+  ['subjectclassdto_11',['SubjectClassDTO',['../class_subject_class_d_t_o.html',1,'']]],
+  ['subjectclassmodel_12',['SubjectClassModel',['../class_subject_class_model.html',1,'']]],
+  ['subjectcontroller_13',['SubjectController',['../class_school_a_p_i_1_1_controllers_1_1_subject_controller.html',1,'SchoolAPI::Controllers']]],
+  ['subjectdto_14',['SubjectDTO',['../class_subject_d_t_o.html',1,'']]],
+  ['subjectmodel_15',['SubjectModel',['../class_subject_model.html',1,'']]],
+  ['subjectservice_16',['SubjectService',['../class_school_1_1_data_access_1_1_services_1_1_subject_service.html',1,'School::DataAccess::Services']]],
+  ['subjectvalidator_17',['SubjectValidator',['../class_school_a_p_i_1_1_validation_1_1_subject_validator.html',1,'SchoolAPI::Validation']]]
 ];
